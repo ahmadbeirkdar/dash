@@ -313,7 +313,7 @@ bool CScriptNum::IsMinimallyEncoded(const std::vector<uint8_t>& vch, const size_
         return false;
     }
 
-    if (vch.size() > 0) {
+    if (!vch.empty()) {
         // Check that the number is encoded with the minimum possible number
         // of bytes.
         //
@@ -337,7 +337,7 @@ bool CScriptNum::IsMinimallyEncoded(const std::vector<uint8_t>& vch, const size_
 
 bool CScriptNum::MinimallyEncode(std::vector<uint8_t>& data)
 {
-    if (data.size() == 0) {
+    if (data.empty()) {
         return false;
     }
 

@@ -10,12 +10,12 @@
 #include <prevector.h>
 #include <serialize.h>
 
-#include <assert.h>
+#include <cassert>
 #include <climits>
 #include <limits>
 #include <stdexcept>
-#include <stdint.h>
-#include <string.h>
+#include <cstdint>
+#include <cstring>
 #include <string>
 #include <vector>
 
@@ -182,6 +182,10 @@ enum opcodetype
     OP_NOP8 = 0xb7,
     OP_NOP9 = 0xb8,
     OP_NOP10 = 0xb9,
+
+     // More crypto
+    OP_CHECKDATASIG = 0xba,
+    OP_CHECKDATASIGVERIFY = 0xbb,
 
     OP_INVALIDOPCODE = 0xff,
 };
@@ -399,7 +403,7 @@ protected:
         return *this;
     }
 public:
-    CScript() { }
+    CScript() = default;
     CScript(const_iterator pbegin, const_iterator pend) : CScriptBase(pbegin, pend) { }
     CScript(std::vector<unsigned char>::const_iterator pbegin, std::vector<unsigned char>::const_iterator pend) : CScriptBase(pbegin, pend) { }
     CScript(const unsigned char* pbegin, const unsigned char* pend) : CScriptBase(pbegin, pend) { }
@@ -562,8 +566,8 @@ class CReserveScript
 public:
     CScript reserveScript;
     virtual void KeepScript() {}
-    CReserveScript() {}
-    virtual ~CReserveScript() {}
+    CReserveScript() = default;
+    virtual ~CReserveScript() = default;
 };
 
 #endif // BITCOIN_SCRIPT_SCRIPT_H
