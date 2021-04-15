@@ -183,6 +183,10 @@ enum opcodetype
     OP_NOP9 = 0xb8,
     OP_NOP10 = 0xb9,
 
+    // More crypto
+    OP_CHECKDATASIG = 0xba,
+    OP_CHECKDATASIGVERIFY = 0xbb,
+
     OP_INVALIDOPCODE = 0xff,
 };
 
